@@ -1,0 +1,83 @@
+[
+  {
+      "title": "基础管理",
+      "icon": "icon-text",
+      "href": "page/news/newsList.html",
+      "spread": false,
+      "children": [
+        {
+          "title": "客户管理",
+          "icon": "&#xe61c;",
+          "href": "page/404.html",
+          "spread": false
+        },
+        {
+          "title": "车辆管理",
+          "icon": "&#xe609;",
+          "href": "page/login/login.html",
+          "spread": false
+        }
+      ]
+  },
+  {
+      "title": "业务管理",
+      "icon": "&#xe634;",
+      "href": "page/img/images.html",
+      "spread": false,
+      "children": [
+        {
+          "title": "汽车出租",
+          "icon": "&#xe61c;",
+          "href": "page/404.html",
+          "spread": false
+        },
+        {
+          "title": "出租单管理",
+          "icon": "&#xe609;",
+          "href": "page/login/login.html",
+          "spread": false
+        },
+        {
+          "title": "汽车入库",
+          "icon": "&#xe61c;",
+          "href": "page/404.html",
+          "spread": false
+        },
+        {
+          "title": "检查单管理",
+          "icon": "&#xe609;",
+          "href": "page/login/login.html",
+          "spread": false
+          
+        }
+      ]
+  },
+  {
+      "title": "系统管理",
+      "icon": "&#xe630;",
+      "href": "",
+      "spread": false,
+      "children": [
+          {
+              "title": "404页面",
+              "icon": "&#xe61c;",
+              "href": "page/404.html",
+              "spread": false
+          },
+          {
+              "title": "登录",
+              "icon": "&#xe609;",
+              "href": "page/login/login.html",
+              "spread": false
+          }
+      ]
+  },
+  {
+    "title": "统计分析",
+    "icon": "&#xe630;",
+    "href": "",
+    "spread": false
+  }
+]
+
+
