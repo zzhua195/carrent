@@ -11,6 +11,11 @@
     <title>Title</title>
     <link rel="stylesheet" href="${ctx}/resources/layui/css/layui.css">
     <link rel="stylesheet" href="${ctx}/resources/css/public.css"/>
+    <style>
+        .gap{
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 <div style="margin: 10px;">
@@ -25,7 +30,7 @@
                     <input type="tel" name="title" id="keyword"  autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-input-inline">
-                    <button class="layui-btn layui-btn-warm" id="searchBtn">
+                    <button class="layui-btn layui-btn-warm" lay-submit lay-filter="*" id="searchBtn">
                         <i class="layui-icon">&#xe615;</i> 搜索
                     </button>
                     <button type="reset" class="layui-btn layui-btn-normal">
@@ -40,7 +45,7 @@
     <script type="text/html" id="menuToolBar">
         <div class="layui-btn-container">
             <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
-            <button class="layui-btn layui-btn-sm" lay-event="batcheDelete">删除</button>
+            <button class="layui-btn layui-btn-sm" lay-event="batcheDelete">批量删除</button>
         </div>
     </script>
 
@@ -50,8 +55,79 @@
     </script>
 
 </div>
+</body>
+<%--弹框--%>
+<div style="display: none;padding: 20px;" id="saveOrUpdate">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-inline gap">
+                <label class="layui-form-label">菜单名称:</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="title" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline gap">
+                <label class="layui-form-label">菜单地址</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="href" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline gap">
+                <label class="layui-form-label">父级菜单</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="pid" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">TARGET</label>
+                <div class="layui-input-inline">
+                    <select name="target">
+                        <option value=""  selected="">默认</option>
+                        <option value="_blank">_blank</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择图标</label>
+            <div class="layui-input-block" style="width:515px">
+                <input type="text" name="icon" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">是否展开</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="spread" value="1" title="展开" >
+                    <input type="radio" name="spread" value="0" title="不展开">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">是否可用</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="available" value="1" title="可用" >
+                    <input type="radio" name="available" value="0" title="不可用">
+                </div>
+            </div>
+        </div>
 
 
+        <div class="layui-form-item" >
+            <div class="layui-input-block" style="margin-left: 250px;">
+                <div class="layui-input-inline">
+                    <button class="layui-btn layui-btn-warm" lay-submit lay-filter="*" id="doSubmit">
+                        <i class="layui-icon">&#xe609;</i> 提交
+                    </button>
+                    <button type="reset" class="layui-btn layui-btn-normal">
+                        <i class="layui-icon">&#xe666;</i>重置
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 <script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
 <script>
 
@@ -60,6 +136,7 @@
     layui.use(['table','jquery','form'],function () {
         var $ = layui.jquery;
         var table = layui.table;
+        var form  = layui.form;
         menuTable = table.render({
             elem: '#menuTable'
             ,id:'menuTabble'
@@ -90,12 +167,15 @@
         });
 
         //搜索按钮
-        $("#searchBtn").click(function () {
+        form.on('submit(*)', function(data){
             var params = $("#dataFrm").serialize();
-            alert(params);
-            table.reload({
-                url:'../menu/loadMenuByPage.action?'+params
+            menuTable.reload({
+                url:'../menu/loadMenuByPage.action?'+params,
+                where:{
+                    page:1
+                }
             });
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });
 
         //监听头工具条事件
@@ -104,6 +184,11 @@
             switch(obj.event){
                 case 'add':
                     layer.msg('添加');
+                    layer.open({
+                        type:1,
+                        content:$("#saveOrUpdate"),
+                        area:['710px','380px']
+                    });
                     break;
                 case 'delete':
                     layer.msg('删除');
@@ -137,12 +222,14 @@
 
     function reloadTable(id){
         menuTable.reload({
-
+            url:'../menu/loadMenuByPage.action?id='+id,
+            where:{
+                page:1
+            }
         });
     }
 
 
 
 </script>
-</body>
 </html>
