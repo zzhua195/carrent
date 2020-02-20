@@ -23,13 +23,14 @@
 </body>
 <script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
 <script>
+    var menuTree
     layui.extend({
         dtree: '${ctx}/resources/layui_ext/dtree/dtree'   // {/}的意思即代表采用自有路径，即不跟随 base 路径
     }).use(['dtree','layer','jquery'], function(){
         var dtree = layui.dtree, layer = layui.layer, $ = layui.jquery;
 
         // 初始化树
-        dtree.render({
+        menuTree = dtree.render({
             elem: "#menuTree",
             url: "${ctx}/menu/loadLeftMenuTree.action",
             dataStyle: "layuiStyle",  //使用layui风格的数据格式
@@ -44,5 +45,11 @@
 
 
     });
+
+    function refreshMenuTree(){
+        menuTree.reload({
+            url: "${ctx}/menu/loadLeftMenuTree.action?spread=1"
+        });
+    }
 </script>
 </html>

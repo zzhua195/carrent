@@ -142,6 +142,10 @@
 
     </select>
 
+    <select id="queryMenuByPid" resultType="java.lang.Integer">
+        select count(1) from sys_menu where pid = #{pid}
+    </select>
+
 
 
 </mapper>

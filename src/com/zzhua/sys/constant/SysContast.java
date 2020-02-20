@@ -17,4 +17,20 @@ public interface SysContast {
     Integer USER_TYPE_NORMAL = 2;//普通用户
     Integer SPREAD_TRUE = 1; //展开
     Integer MENU_TOP_ID = 1; //顶级菜单
+
+
+    Integer CODE_SUCCESS = 0;//操作成功码
+    Integer CODE_ERROR = -1 ;//操作失败码
+
+    String ADD_SUCCESS = "添加成功";
+    String ADD_ERROR = "添加成功";
+    String DELETE_SUCCESS = "删除成功";
+    String DELETE_ERROR = "删除失败";
+    String UPDATE_SUCCESS = "修改成功";
+    String UPDATE_ERROR = "修改失败";
+    String DISPATCHER_SUCCESS = "分配成功";
+    String DISPATCHER_ERROR = "分配失败";
+
+//
+
 }

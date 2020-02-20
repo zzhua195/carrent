@@ -5,13 +5,11 @@ import com.zzhua.sys.constant.SysContast;
 import com.zzhua.sys.domain.Menu;
 import com.zzhua.sys.domain.User;
 import com.zzhua.sys.service.MenuService;
-import com.zzhua.sys.utils.DataGridView;
-import com.zzhua.sys.utils.TreeNode;
-import com.zzhua.sys.utils.TreeNodeBuilder;
-import com.zzhua.sys.utils.WebUtils;
+import com.zzhua.sys.utils.*;
 import com.zzhua.sys.vo.MenuVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -80,7 +78,7 @@ public class MenuController {
             );
             treeNodes.add(treeNode);
         }
-        treeNodeList = TreeNodeBuilder.build(treeNodes,SysContast.MENU_TOP_ID);
+        treeNodeList = TreeNodeBuilder.build(treeNodes,0);
         return new DataGridView(treeNodeList);
     }
 
@@ -88,5 +86,52 @@ public class MenuController {
     public DataGridView loadMenuByPage(MenuVo menuVo){
         return menuService.queryMenuByPage(menuVo);
     }
+
+    @RequestMapping("addMenu")
+    public ResultObj addMenu(MenuVo menuVo){
+        try {
+            menuService.addMenu(menuVo);
+            return ResultObj.ADD_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.ADD_ERROR;
+        }
+    }
+
+    @RequestMapping("updateMenu")
+    public ResultObj updateMunu(MenuVo menuVo){
+        try {
+            menuService.updateMunu(menuVo);
+            return ResultObj.UPDATE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.UPDATE_ERROR;
+        }
+    }
+
+    @RequestMapping("deleteMenu")
+    public ResultObj deleteMenu(Integer id){
+        try {
+            menuService.deleteMenu(id);
+            return ResultObj.DELETE_SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultObj.DELETE_ERROR;
+        }
+    }
+
+    // 判断是否有子节点
+    @RequestMapping("hasChidrenNode")
+    public ResultObj hasChildrenNode(Integer id){
+        int count = menuService.queryMenuByPid(id);
+        if(count > 0 ){
+            return ResultObj.STATUS_TRUE;
+        }else{
+            return ResultObj.STATUS_ERROR;
+        }
+    }
+
+
+
 
 }

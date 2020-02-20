@@ -21,4 +21,12 @@ public interface MenuService {
     List<Menu> queryAllMenu(MenuVo menuVo);
 
     DataGridView queryMenuByPage(MenuVo menuVo);
+
+    void addMenu(MenuVo menuVo);
+
+    void updateMunu(MenuVo menuVo);
+
+    void deleteMenu(Integer id);
+
+    int queryMenuByPid(Integer pid);
 }

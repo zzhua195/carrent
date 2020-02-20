@@ -38,5 +38,25 @@ public class MenuServiceImpl implements MenuService {
         return new DataGridView(menuPage.getTotal(),menuList);
     }
 
+    @Override
+    public void addMenu(MenuVo menuVo) {
+        menuMapper.insert(menuVo);
+    }
+
+    @Override
+    public void updateMunu(MenuVo menuVo) {
+        menuMapper.updateByPrimaryKey(menuVo);
+    }
+
+    @Override
+    public void deleteMenu(Integer id) {
+        menuMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int queryMenuByPid(Integer pid) {
+        return menuMapper.queryMenuByPid(pid);
+    }
+
 
 }
