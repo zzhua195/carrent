@@ -35,5 +35,9 @@ public class SysController {
         return "sys/role/roleManager";
     }
 
+    @RequestMapping("toUserManager")
+    public String toUserManager(){
+        return "sys/user/userManager";
+    }
 
 }

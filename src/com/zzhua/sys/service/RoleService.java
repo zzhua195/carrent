@@ -32,4 +32,6 @@ public interface RoleService {
     DataGridView<TreeNode> initRoleMenuTreeJson(Integer roleid);
 
     void resetRoleMenu(Integer roleid, Integer[] ids);
+
+    DataGridView<Role> queryRoleByUid(Integer uid);
 }

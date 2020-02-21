@@ -1,5 +1,6 @@
 package com.zzhua.sys.service.impl;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.sun.deploy.panel.TreeBuilder;
@@ -13,11 +14,14 @@ import com.zzhua.sys.utils.DataGridView;
 import com.zzhua.sys.utils.TreeNode;
 import com.zzhua.sys.utils.TreeNodeBuilder;
 import com.zzhua.sys.vo.RoleVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Copyright (C), 2019, 深圳太极云软技术有限公司
@@ -108,6 +112,30 @@ public class RoleServiceImpl implements RoleService {
                 roleMapper.addMenuToRole(roleid,id);
             }
         }
+    }
+
+    @Override
+    public DataGridView queryRoleByUid(Integer uid) {
+        Role role = new Role();
+        role.setAvailable(SysContast.AVAILABLE_TRUE);
+        List<Role> allRoleList = roleMapper.queryAllRole(role);
+        List<Role> roleList = roleMapper.queryRoleByUid(uid);
+        ArrayList<Map> mapList = new ArrayList<>();
+        for (Role role1 : allRoleList) {
+            HashMap<String, Object> map = new HashMap<>();
+            boolean LAY_CHECKED = SysContast.FALSE;
+            for (Role role2 : roleList) {
+                if(role2.getRoleid().equals(role1.getRoleid())){
+                    LAY_CHECKED = SysContast.TRUE;
+                }
+            }
+            map.put("roleid",role1.getRoleid());
+            map.put("roledesc",role1.getRoledesc());
+            map.put("rolename",role1.getRoledesc());
+            map.put("LAY_CHECKED",LAY_CHECKED);
+            mapList.add(map);
+        }
+        return new DataGridView(mapList);
     }
 
 

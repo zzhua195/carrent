@@ -164,4 +164,33 @@
     <select id="login" resultMap="BaseResultMap">
       select * from sys_user where loginname = #{loginname} and pwd = #{pwd}
     </select>
+    <delete id="deleteUserRoleByUid">
+        delete from sys_role_user where uid = #{userid}
+    </delete>
+    <select id="queryAllUser" resultMap="BaseResultMap">
+        select * from sys_user
+        <where>
+            <if test="loginname!=null and loginname!=''">
+                and loginname like "%"#{loginname}"%"
+            </if>
+            <if test="realname!=null and realname!=''">
+                and realname like "%"#{realname}"%"
+            </if>
+            <if test="address!=null and address!=''">
+                and address like "%"#{address}"%"
+            </if>
+            <if test="phone!=null and phone !=''">
+                and phone = #{phone}
+            </if>
+            <if test="identity!=null and identity!=''">
+                and identity like "%"#{identity}"%"
+            </if>
+            <if test="sex!=null">
+                and sex = #{sex}
+            </if>
+        </where>
+    </select>
+    <insert id="addRoleToUser">
+        insert into sys_role_user (uid,rid) values(#{userid},#{rid})
+    </insert>
 </mapper>

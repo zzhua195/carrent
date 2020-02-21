@@ -95,7 +95,12 @@
             <if test="available!=null">
                 and available = #{available}
             </if>
-
+            <if test="1!=0">
+                and available = 1
+            </if>
+            <if test="1!=0">
+                and roleid != 1
+            </if>
         </where>
 
     </select>
@@ -107,5 +112,9 @@
     <insert id="addMenuToRole" >
         insert into sys_role_menu (rid,mid) values(#{roleid},#{mid})
     </insert>
+    
+    <select id="queryRoleByUid" resultMap="BaseResultMap">
+        select r.* from sys_role r left join sys_role_user ru on r.roleid = ru.rid where ru.uid = #{uid}
+    </select>
 
 </mapper>

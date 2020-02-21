@@ -95,6 +95,12 @@ public class RoleController {
         return ResultObj.DISPATCHER_ERROR;
     }
 
+    //根据userid查询对应的角色
+    @RequestMapping("queryRoleByUid")
+    public DataGridView<Role> queryRoleByUid(Integer uid){
+        return roleService.queryRoleByUid(uid);
+    }
+
 
 
 }

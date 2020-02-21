@@ -1,6 +1,10 @@
 package com.zzhua.sys.mapper;
 
 import com.zzhua.sys.domain.User;
+import com.zzhua.sys.vo.UserVo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userid);
@@ -20,4 +24,9 @@ public interface UserMapper {
      */
     User login(User user);
 
+    void deleteUserRoleByUid(Integer userid);
+
+    List<User> queryAllUser(UserVo userVo);
+
+    void addRoleToUser(@Param("rid") Integer rid, @Param("userid")Integer userid);
 }

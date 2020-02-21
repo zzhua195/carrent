@@ -19,9 +19,11 @@ public interface RoleMapper {
 
     int updateByPrimaryKey(Role record);
 
-    List<Role> queryAllRole(RoleVo roleVo);
+    List<Role> queryAllRole(Role role);
 
     void deleteRoleMenuByRid(Integer roleid);
 
     void addMenuToRole(@Param("roleid") Integer roleid, @Param("mid") Integer mid);
+
+    List<Role> queryRoleByUid(Integer uid);
 }
