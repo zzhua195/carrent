@@ -98,9 +98,6 @@
             <if test="1!=0">
                 and available = 1
             </if>
-            <if test="1!=0">
-                and roleid != 1
-            </if>
         </where>
 
     </select>

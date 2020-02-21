@@ -41,6 +41,7 @@ public class MenuController {
                 menuList = menuService.queryAllMenu(menuVo);
             }else{
                 //普通用户查询菜单
+                menuList = menuService.queryMenuByUid(user.getUserid());
             }
             List<TreeNode> treeNodes = new ArrayList<>();
             for (Menu menu : menuList) {

@@ -58,5 +58,10 @@ public class MenuServiceImpl implements MenuService {
         return menuMapper.queryMenuByPid(pid);
     }
 
+    @Override
+    public List<Menu> queryMenuByUid(Integer uid) {
+        return menuMapper.queryMenuByUid(uid);
+    }
+
 
 }

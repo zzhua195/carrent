@@ -216,7 +216,7 @@
             dataStyle: "layuiStyle",  //使用layui风格的数据格式
             response:{message:"msg",statusCode:0} , //修改response中返回数据的定义
             checkbar:false,
-            selectCardHeight: "150",
+            height: "50",
 
 
         });
@@ -234,6 +234,7 @@
                     $("#saveOrUpdateFrm")[0].reset();
                     dtree.reload("selMenuTree",{
                         url: "${ctx}/menu/loadLeftMenuTree.action?spread=1",
+                        height:50,
                         done: function(res, $ul, first){
                             if(first) {
                                 dtree.dataInit("selMenuTree", "");
@@ -294,6 +295,7 @@
                         dtree.reload("selMenuTree",{
                             url: "${ctx}/menu/loadLeftMenuTree.action?spread=1",
                             dataStyle: "layuiStyle",  //使用layui风格的数据格式
+                            height:50,
                             response:{message:"msg",statusCode:0} , //修改response中返回数据的定义
                             checkbar:false,
                             done: function(res, $ul, first){

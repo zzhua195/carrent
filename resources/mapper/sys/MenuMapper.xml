@@ -150,6 +150,11 @@
         select m.* from sys_menu m left join sys_role_menu rm on rm.mid = m.id where rm.rid = #{roleid}
     </select>
 
+    <select id="queryMenuByUid" resultMap="BaseResultMap">
+        select m.* from sys_menu m left join sys_role_menu rm on m.id = rm.mid
+            left join sys_role_user ru on rm.rid = ru.rid where ru.uid = #{uid}
+    </select>
+
 
 
 </mapper>

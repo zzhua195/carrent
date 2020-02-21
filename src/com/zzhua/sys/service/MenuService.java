@@ -29,4 +29,7 @@ public interface MenuService {
     void deleteMenu(Integer id);
 
     int queryMenuByPid(Integer pid);
+
+    List<Menu> queryMenuByUid(Integer uid);
+
 }

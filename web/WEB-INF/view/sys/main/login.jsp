@@ -40,7 +40,9 @@
     <div class="layui-form-item">
         <button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
     </div>
+    <div style="color: red;text-align: center;">${error}</div>
 </form>
+
 <script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
 <script>
     layui.use(['form','layer','jquery'],function(){
