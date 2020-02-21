@@ -30,6 +30,10 @@ public class SysController {
         return "sys/menu/menuRight";
     }
 
+    @RequestMapping("toRoleManager")
+    public String toRoleManager(){
+        return "sys/role/roleManager";
+    }
 
 
 }

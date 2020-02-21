@@ -30,7 +30,11 @@ public interface SysContast {
     String UPDATE_ERROR = "修改失败";
     String DISPATCHER_SUCCESS = "分配成功";
     String DISPATCHER_ERROR = "分配失败";
+    String CHECKED_TRUE = "1"; //复选框勾选
+    String CHECKED_FALSE = "0"; //复选框不勾选
+    boolean TRUE = true;
+    boolean FALSE = false;
 
-//
 
+    int ZERO = 0;
 }

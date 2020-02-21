@@ -146,6 +146,10 @@
         select count(1) from sys_menu where pid = #{pid}
     </select>
 
+    <select id="queryMenuByRid" resultMap="BaseResultMap">
+        select m.* from sys_menu m left join sys_role_menu rm on rm.mid = m.id where rm.rid = #{roleid}
+    </select>
+
 
 
 </mapper>

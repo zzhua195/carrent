@@ -24,6 +24,17 @@ public class TreeNode {
     private boolean spread;
     private List<TreeNode> children = new ArrayList<>();
 
+//    树的复选框属性
+    private String checkArr = "0";
+
+//  用于分配菜单树
+    public TreeNode(Integer id, Integer pid, boolean spread,String title) {
+        this.id = id;
+        this.pid = pid;
+        this.title = title;
+        this.spread = spread;
+    }
+
     public TreeNode(Integer id, Integer pid, String title, String icon, String href, boolean spread) {
         this.id = id;
         this.pid = pid;
@@ -34,6 +45,18 @@ public class TreeNode {
     }
 
     public TreeNode() {
+    }
+
+    public boolean isSpread() {
+        return spread;
+    }
+
+    public String getCheckArr() {
+        return checkArr;
+    }
+
+    public void setCheckArr(String checkArr) {
+        this.checkArr = checkArr;
     }
 
     public Integer getId() {

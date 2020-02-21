@@ -20,4 +20,6 @@ public interface MenuMapper {
     List<Menu> queryAllMenu(Menu menu);
 
     int queryMenuByPid(Integer pid);
+
+    List<Menu> queryMenuByRid(Integer roleid);
 }
