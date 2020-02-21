@@ -212,10 +212,11 @@
         //初始化渲染下拉树
         var selMenuTree = dtree.renderSelect({
             elem: "#selMenuTree",
-            url: "${ctx}/menu/loadLeftMenuTree.action",
+            url: "${ctx}/menu/loadLeftMenuTree.action?spread=1",
             dataStyle: "layuiStyle",  //使用layui风格的数据格式
             response:{message:"msg",statusCode:0} , //修改response中返回数据的定义
-            checkbar:false
+            checkbar:false,
+            selectCardHeight: "150",
 
 
         });
@@ -230,8 +231,19 @@
             var checkStatus = table.checkStatus(obj.config.id);
             switch(obj.event){
                 case 'add':
-                    selMenuTree.selectResetVal();
                     $("#saveOrUpdateFrm")[0].reset();
+                    dtree.reload("selMenuTree",{
+                        url: "${ctx}/menu/loadLeftMenuTree.action?spread=1",
+                        done: function(res, $ul, first){
+                            if(first) {
+                                dtree.dataInit("selMenuTree", "");
+                                // 也可以在这里指定，第二个参数如果不填，则会自动返显当前选中的数据
+                                var selectParam = dtree.selectVal("selMenuTree");
+                            }
+
+                        }
+                    });
+
                     mainIndex = layer.open({
                         title:'添加菜单',
                         type:1,
@@ -280,14 +292,15 @@
                         url = '../menu/updateMenu.action';
                         form.val('saveOrUpdateFrm',data);
                         dtree.reload("selMenuTree",{
-                            url: "${ctx}/menu/loadLeftMenuTree.action",
+                            url: "${ctx}/menu/loadLeftMenuTree.action?spread=1",
                             dataStyle: "layuiStyle",  //使用layui风格的数据格式
                             response:{message:"msg",statusCode:0} , //修改response中返回数据的定义
                             checkbar:false,
-                            selectInitVal: data.pid,
                             done: function(res, $ul, first){
                                 if(first) {
                                     dtree.dataInit("selMenuTree", data.pid);
+                                    // 也可以在这里指定，第二个参数如果不填，则会自动返显当前选中的数据
+                                    var selectParam = dtree.selectVal("selMenuTree");
                                 }
                             }
 
