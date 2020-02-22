@@ -40,4 +40,14 @@ public class SysController {
         return "sys/user/userManager";
     }
 
+    @RequestMapping("toLogInfoManager")
+    public String toLogInfoManager(){
+        return "sys/logInfo/logInfoManager";
+    }
+
+    @RequestMapping("toNewsManager")
+    public String toNewsManager(){
+        return "sys/news/newsManager";
+    }
+
 }
