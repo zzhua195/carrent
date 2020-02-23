@@ -13,8 +13,8 @@ public interface SysContast {
     String USER_LOGIN_ERROR_MSG = "用户名或密码不正确";
     Integer AVAILABLE_TRUE = 1; //可用
     Integer AVAILABLE_FALSE = 0;//不可用
-    Integer USER_TYPE_SUPER = 0;//超级用户
-    Integer USER_TYPE_NORMAL = 1;//普通用户
+    Integer USER_TYPE_SUPER = 1;//超级用户
+    Integer USER_TYPE_NORMAL = 2;//普通用户
     Integer SPREAD_TRUE = 1; //展开
     Integer MENU_TOP_ID = 1; //顶级菜单
 
@@ -23,7 +23,7 @@ public interface SysContast {
     Integer CODE_ERROR = -1 ;//操作失败码
 
     String ADD_SUCCESS = "添加成功";
-    String ADD_ERROR = "添加成功";
+    String ADD_ERROR = "添加失败";
     String DELETE_SUCCESS = "删除成功";
     String DELETE_ERROR = "删除失败";
     String UPDATE_SUCCESS = "修改成功";
@@ -37,4 +37,8 @@ public interface SysContast {
 
 
     int ZERO = 0;
+    String IDENTITY_TRUE = "该身份证已被使用";
+    String IDENTITY_FALSE = "改身份证可以使用";
+    String NOT_EMPTY_IDENTITY = "身份证不能为空";
+    String SERVER_ERROR = "暂时无法添加，请联系管理员";
 }

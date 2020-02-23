@@ -2,6 +2,7 @@ package com.zzhua.sys.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.zzhua.sys.constant.SysContast;
 import com.zzhua.sys.domain.Role;
 import com.zzhua.sys.domain.User;
 import com.zzhua.sys.mapper.UserMapper;
@@ -45,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(UserVo userVo) {
-        userVo.setType(1);// 默认为普通用户
+        userVo.setType(SysContast.USER_TYPE_NORMAL);// 默认为普通用户
         userMapper.insert(userVo);
     }
 

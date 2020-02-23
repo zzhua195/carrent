@@ -45,6 +45,35 @@
     </servlet-mapping>
     <!-- 前端控制器结束 -->
 
+    <!--配置druid数据源的监控-->
+    <servlet>
+        <servlet-name>statViewServlet</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+        <init-param>
+            <param-name>loginUsername</param-name>
+            <param-value>1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>loginPassword</param-name>
+            <param-value>1</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>statViewServlet</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
+    </servlet-mapping>
+    
+    <filter>
+        <filter-name>webstatFilter</filter-name>
+        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>webstatFilter</filter-name>
+        <servlet-name>statViewServlet</servlet-name>
+    </filter-mapping>
+
+
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>

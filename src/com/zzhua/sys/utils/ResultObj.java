@@ -17,6 +17,10 @@ public class ResultObj {
 
     public static final ResultObj STATUS_ERROR = new ResultObj((SysContast.CODE_ERROR));
     public static final ResultObj STATUS_TRUE = new ResultObj((SysContast.CODE_SUCCESS));
+    public static final ResultObj CHECK_TRUE_IDENTITY = new ResultObj(SysContast.CODE_ERROR, SysContast.IDENTITY_TRUE);
+    public static final ResultObj CHECK_FALSE_IDENTITY = new ResultObj(SysContast.CODE_SUCCESS, SysContast.IDENTITY_FALSE);
+    public static final ResultObj NOT_EMPTY_IDENTITY = new ResultObj(SysContast.CODE_ERROR, SysContast.NOT_EMPTY_IDENTITY);;
+    public static final ResultObj SERVER_ERROR = new ResultObj(SysContast.CODE_ERROR, SysContast.SERVER_ERROR);;
     private Integer code;
     private String msg;
 

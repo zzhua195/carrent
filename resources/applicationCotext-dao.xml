@@ -11,12 +11,13 @@
         <context:property-placeholder location="classpath:db.properties" system-properties-mode="FALLBACK"/>
 
         <!-- 声明dataSource -->
-        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init">
             <!-- 注入连接属性 -->
             <property name="driverClassName" value="${jdbc.driver}"></property>
             <property name="url" value="${jdbc.url}"></property>
             <property name="username" value="${jdbc.username}"></property>
             <property name="password" value="${jdbc.password}"></property>
+            <property name="filters" value="stat"></property>
         </bean>
 
         <!-- 声明sessionFactory  并注入mybatis.cfg.xml-->
