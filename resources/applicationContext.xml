@@ -5,5 +5,5 @@
 
     <import resource="classpath:applicationCotext-dao.xml"/>
     <import resource="classpath:applicationContext-service.xml"/>
-
+    <import resource="classpath:applicationContext-quartz.xml"/>
 </beans>

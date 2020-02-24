@@ -150,4 +150,29 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where carnumber = #{carnumber,jdbcType=VARCHAR}
   </update>
+
+    <select id="queryAllCar" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from bus_car
+        <where>
+            <if test="carnumber != null and carnumber != ''">
+                and carnumber like "%"#{carnumber}"%"
+            </if>
+            <if test="cartype != null and cartype != ''">
+                and cartype like "%"#{cartype}"%"
+            </if>
+            <if test="isrenting != null">
+                and isrenting = #{isrenting}
+            </if>
+            <if test="color != null and color != ''">
+                and color like "%"#{color}"%"
+            </if>
+            <if test="description != null and description != ''">
+                and description like "%"#{description}"%"
+            </if>
+
+        </where>
+    </select>
+
 </mapper>

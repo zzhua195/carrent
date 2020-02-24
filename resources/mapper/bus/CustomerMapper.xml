@@ -115,7 +115,7 @@
     where
       identity = #{identity}
   </update>
-    <select id="queryAllCustomer" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="queryAllCustomer"  resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from bus_customer

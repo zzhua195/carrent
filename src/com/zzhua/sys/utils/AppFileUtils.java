@@ -1,5 +1,6 @@
 package com.zzhua.sys.utils;
 
+import com.zzhua.sys.constant.SysContast;
 import org.apache.commons.io.FileUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -95,5 +96,18 @@ public class AppFileUtils {
 			file.delete();
 		}
 	}
+
+    public static String removeSuffix(String carimg) {
+        try {
+            File temp_file = new File(PATH, carimg);
+            if(temp_file.exists()){
+                temp_file.renameTo(new File(PATH,carimg.replace(SysContast.DEFAULT_TEMP_SUFFIX,"")));
+            }
+            return carimg.replace(SysContast.DEFAULT_TEMP_SUFFIX,"");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 

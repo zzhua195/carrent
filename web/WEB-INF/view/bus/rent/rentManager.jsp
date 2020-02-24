@@ -26,41 +26,12 @@
     <form class="layui-form" id="dataFrm">
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">车牌号: </label>
+                <label class="layui-form-label">身份证号: </label>
                 <div class="layui-input-inline">
                     <input type="text" name="carnumber"   autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">车辆类型: </label>
-                <div class="layui-input-inline">
-                    <input type="text" name="cartype"   autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">车辆颜色: </label>
-                <div class="layui-input-inline">
-                    <input type="text" name="color" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item" >
-            <div class="layui-inline">
-                <label class="layui-form-label">车辆描述: </label>
-                <div class="layui-input-inline">
-                    <input type="text" name="description"   autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">是否出租</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="isrenting" value="1" title="已出租">
-                    <input type="radio" name="isrenting" value="0" title="可出租">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item" >
-            <div class="layui-block" style="text-align: center;">
                 <button class="layui-btn layui-btn-warm" lay-submit lay-filter="*" id="searchBtn">
                     <i class="layui-icon">&#xe615;</i> 搜索
                 </button>
@@ -76,19 +47,9 @@
     <table id="carTable" lay-filter="carTable"></table>
     <%--表格结束--%>
 
-    <%--头工具条开始--%>
-    <script type="text/html" id="carToolBar">
-        <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
-            <button class="layui-btn layui-btn-sm" lay-event="deleteBatchCar">批量删除</button>
-        </div>
-    </script>
-    <%--头工具条结束--%>
-
     <%--工具条开始--%>
     <script type="text/html" id="carBar">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        <a class="layui-btn layui-btn-green layui-btn-xs" lay-event="rentCar">出租汽车</a>
         <a class="layui-btn layui-btn-normal layui-btn-xs " lay-event="viewImg">查看大图</a>
     </script>
     <%--工具条结束--%>
@@ -97,70 +58,52 @@
 </body>
 
 <%--添加修改弹框--%>
-<div style="display: none;padding: 20px;" id="saveOrUpdateDiv">
-    <form class="layui-form layui-row layui-col-space10" id="saveOrUpdateFrm" lay-filter="saveOrUpdateFrm" >
-        <div class="layui-col-md9 layui-col-xs7">
-            <div class="layui-form-item magt3">
+<div style="display: none;padding: 20px;" id="rentCarDiv">
+    <form class="layui-form layui-row layui-col-space10" id="rentCarFrm" lay-filter="rentCarFrm" >
+        <div class="layui-form-item magt3">
+            <div class="layui-inline">
+                <label class="layui-form-label">起租时间</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="begindate" name="begindate" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">还车时间</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="returndate" name="returndate" lay-verify="required">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">出租单号</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" name="rentid" lay-verify="required" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证号</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" name="identity" lay-verify="required" >
+            </div>
+        </div>
+        <div class="layui-form-item magt3">
+            <div class="layui-inline">
                 <label class="layui-form-label">车牌号</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" id="carnumber" name="carnumber" lay-verify="required"
-                           placeholder="请输入车牌号">
+                    <input type="text" class="layui-input" name="carnumber" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">车辆类型</label>
+            <div class="layui-inline">
+                <label class="layui-form-label">出租价格</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" name="cartype" lay-verify="required"
-                           placeholder="请输入车辆类型">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">车辆颜色</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" name="color" lay-verify="required"
-                           placeholder="请输入车辆颜色">
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-md3 layui-col-xs5">
-            <div class="layui-upload-list thumbBox mag0 magt3" id="carimgDiv">
-                <img class="layui-upload-img thumbImg" id="showCarimg">
-                <input type="hidden" name="carimg" id="carimg"/>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">购买价格: </label>
-                <div class="layui-input-inline">
-                    <input type="text" name="price"   autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">出租价格: </label>
-                <div class="layui-input-inline">
-                    <input type="text" name="rentprice"   autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">出租押金: </label>
-                <div class="layui-input-inline">
-                    <input type="text" name="deposit"   autocomplete="off" class="layui-input">
+                    <input type="text" class="layui-input" name="price" lay-verify="required">
                 </div>
             </div>
         </div>
         <div class="layui-form-item">
-            <div class="layui-block">
-                <label class="layui-form-label">车辆描述: </label>
-                <div class="layui-input-inline">
-                    <input type="text" name="description"   autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">是否出租</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="isrenting" value="1" title="已出租">
-                    <input type="radio" name="isrenting" value="0" title="可出租">
-                </div>
+            <label class="layui-form-label">操作员</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" name="carnumber" lay-verify="required" >
             </div>
         </div>
         <div class="layui-form-item" >
@@ -183,39 +126,15 @@
 </div>
 <%--显示大图结束--%>
 
-<%--汽车分配角色弹框开始--%>
-<div style="display: none;margin: 10px;" id="selectCarRoleDiv">
-    <table class="layui-hide" id="roleTable" lay-filter="roleTable"></table>
-</div>
-<%--汽车分配角色弹框结束--%>
 <script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
 <script>
 
     var carTable;
 
-    layui.use(['table','jquery','form','upload'],function () {
+    layui.use(['table','jquery','form'],function () {
         var $ = layui.jquery;
         var table = layui.table;
         var form  = layui.form;
-        var upload = layui.upload;
-
-        upload.render({
-            elem: '#carimgDiv' //绑定元素
-            ,acceptMime: 'image/*'
-            ,size:200
-            ,field:'mf'
-            ,url: '${ctx}/file/upload.action' //上传接口
-            ,done: function(res){
-                //上传完毕回调
-                $("#carimg").val(res.data.src);
-                $("#showCarimg").attr("src",'${ctx}/file/downloadShowFile.action?filepath='+res.data.src);
-
-            }
-            ,error: function(){
-                //请求异常回调
-            }
-
-        });
 
         carTable = table.render({
             elem: '#carTable'
@@ -274,12 +193,12 @@
                 case 'add':
                     $("#carnumber").removeAttr("readonly");
                     $("#showCarimg").attr("src","${ctx}/file/downloadShowFile.action?filepath=images/defaultcarimage.jpg");
-                    $("#saveOrUpdateFrm")[0].reset();
+                    $("#rentCarFrm")[0].reset();
                     $('#carimg').val("/images/defaultcarimage.jpg");
                     mainIndex = layer.open({
                         title:'添加汽车',
                         type:1,
-                        content:$("#saveOrUpdateDiv"),
+                        content:$("#rentCarDiv"),
                         offset:'5px',
                         area:['1100px','480px'],
                         success:function (layero, index) {
@@ -333,16 +252,16 @@
                         }
                     })
                 });
-            } else if(obj.event === 'edit'){
+            } else if(obj.event === 'rentCar'){
                 mainIndex = layer.open({
                     title:'修改汽车',
                     type:1,
                     offset:'5px',
                     area:['1100px','480px'],
-                    content:$("#saveOrUpdateDiv"),
+                    content:$("#rentCarDiv"),
                     success:function (layero, index) {
                         url = '../car/updateCar.action';
-                        form.val('saveOrUpdateFrm',data);
+                        form.val('rentCarFrm',data);
                         $("#showCarimg").attr("src","${ctx}/file/downloadShowFile.action?filepath="+data.carimg);
                         $('#carnumber').attr("readonly","readonly");
                     }

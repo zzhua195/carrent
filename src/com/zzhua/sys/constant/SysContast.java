@@ -41,4 +41,7 @@ public interface SysContast {
     String IDENTITY_FALSE = "改身份证可以使用";
     String NOT_EMPTY_IDENTITY = "身份证不能为空";
     String SERVER_ERROR = "暂时无法添加，请联系管理员";
+    String UPLOAD_ERROR = "上传失败呀";
+    String DEFAULT_TEMP_SUFFIX = "_temp";
+    String DEFAULT_CAR_IMG = "/images/defaultcarimage.jpg";
 }

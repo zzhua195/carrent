@@ -15,16 +15,16 @@ public class DataGridView<T> {
     private Integer code = 0;
     private String msg = "";
     private Long count;
-    private List<T> data;
+    private Object data;
 
     public DataGridView() {
     }
 
-    public DataGridView(List<T> data) {
+    public DataGridView(Object data) {
         this.data = data;
     }
 
-    public DataGridView(Long count, List<T> data) {
+    public DataGridView(Long count, Object data) {
         this.count = count;
         this.data = data;
     }
@@ -60,7 +60,7 @@ public class DataGridView<T> {
         this.count = count;
     }
 
-    public List<T> getData() {
+    public Object getData() {
         return data;
     }
 
