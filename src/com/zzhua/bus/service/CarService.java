@@ -24,5 +24,7 @@ public interface CarService {
 
     DataGridView queryCarByPage(CarVo carVo);
 
+    void updateByPrimaryKeySelective(Car car);
+
 
 }

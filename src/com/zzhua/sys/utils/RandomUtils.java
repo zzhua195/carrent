@@ -1,5 +1,7 @@
 package com.zzhua.sys.utils;
 
+import com.zzhua.sys.constant.SysContast;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -44,6 +46,10 @@ public class RandomUtils {
 		String fileSuffix=fileName.substring(fileName.lastIndexOf("."),fileName.length());
 		return UUID.randomUUID().toString().replace("-", "").toUpperCase()+fileSuffix;
 	}
-	
+
+    public static String getRentid() {
+
+        return SysContast.DEFAULT_RENT_PREFIX+"_"+sdf2.format(new Date())+"_"+(10000+random.nextInt(90000));
+    }
 }
 

@@ -34,6 +34,11 @@ public class CarServiceImpl implements CarService {
         return new DataGridView(carPage.getTotal(),carList);
     }
 
+    @Override
+    public void updateByPrimaryKeySelective(Car car) {
+        carMapper.updateByPrimaryKeySelective(car);
+    }
+
 
     @Override
     public void addCar(Car car) {

@@ -141,7 +141,7 @@
     <select id="queryAllRent"  resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from bus_customer
+        from bus_rent
         <where>
             <if test="rentid != null and rentid != ''">
                 and rentid like "%"#{rentid}"%"
@@ -149,16 +149,19 @@
             <if test="rentflag != null ">
                 and rentflag =#{rentflag}
             </if>
+            <if test="carnumber != null and carnumber != '' ">
+                and carnumber like "%"#{carnumber}"%"
+            </if>
             <if test="identity != null and identity != ''">
                 and identity like "%"#{identity}"%"
             </if>
-            <if test="carnumber != null and carnumber != ''">
-                and carnumber like "%"#{carnumber}"%"
+            <if test="starttime!=null">
+                and createtime >= #{starttime}
             </if>
-            <if test="opername != null and opername != ''">
-                and opername like "%"#{opername}"%"
+            <if test="endtime!=null">
+                and createtime &lt; #{endtime}
             </if>
-
         </where>
+        order by createtime DESC
     </select>
 </mapper>

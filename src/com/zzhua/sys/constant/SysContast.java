@@ -44,4 +44,9 @@ public interface SysContast {
     String UPLOAD_ERROR = "上传失败呀";
     String DEFAULT_TEMP_SUFFIX = "_temp";
     String DEFAULT_CAR_IMG = "/images/defaultcarimage.jpg";
+    String DEFAULT_RENT_PREFIX = "CZ";
+    Integer RETURN_BACK_FALSE = 0;// 未归还
+    Integer RETURN_BACK_TRUE = 1;// 已归还
+    Integer RENTED_TRUE = 1; //已出租
+    Integer RENTED_FALSE = 0; //未出租
 }

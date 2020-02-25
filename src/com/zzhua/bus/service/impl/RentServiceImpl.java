@@ -45,6 +45,11 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
+    public void updateRentSelectiveById(Rent rent) {
+        rentMapper.updateByPrimaryKeySelective(rent);
+    }
+
+    @Override
     public void deleteRent(String identity) {
         rentMapper.deleteByPrimaryKey(identity);
     }

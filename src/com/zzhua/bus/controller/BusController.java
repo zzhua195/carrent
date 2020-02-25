@@ -26,6 +26,11 @@ public class BusController  {
     }
 
     @RequestMapping("toRentCarManager")
+    public String toRentCarManager(){
+        return "bus/rent/rentCarManager";
+    }
+
+    @RequestMapping("toRentManager")
     public String toRentManager(){
         return "bus/rent/rentManager";
     }
