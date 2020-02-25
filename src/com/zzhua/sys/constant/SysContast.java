@@ -49,4 +49,9 @@ public interface SysContast {
     Integer RETURN_BACK_TRUE = 1;// 已归还
     Integer RENTED_TRUE = 1; //已出租
     Integer RENTED_FALSE = 0; //未出租
+    String RENTID_TRUE = "出租单存在";
+    String RENTID_FALSE = "出租单不存在";
+    String DEFAULT_CHECK_PREFIX = "JC";
+    String RENT_FINISH_TRUE = "出租单已完结";
+    Integer CODE_ONE = 1;
 }

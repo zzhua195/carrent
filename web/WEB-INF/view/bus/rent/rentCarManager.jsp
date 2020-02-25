@@ -248,7 +248,7 @@
                     layer.msg(resp.msg);
                 }else{
                     layer.close(mainIndex);
-                    table.reload();
+                    carTable.reload();
                     layer.msg(resp.msg);
                 }
 

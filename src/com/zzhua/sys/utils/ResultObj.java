@@ -20,7 +20,10 @@ public class ResultObj {
     public static final ResultObj CHECK_TRUE_IDENTITY = new ResultObj(SysContast.CODE_ERROR, SysContast.IDENTITY_TRUE);
     public static final ResultObj CHECK_FALSE_IDENTITY = new ResultObj(SysContast.CODE_SUCCESS, SysContast.IDENTITY_FALSE);
     public static final ResultObj NOT_EMPTY_IDENTITY = new ResultObj(SysContast.CODE_ERROR, SysContast.NOT_EMPTY_IDENTITY);;
-    public static final ResultObj SERVER_ERROR = new ResultObj(SysContast.CODE_ERROR, SysContast.SERVER_ERROR);;
+    public static final ResultObj SERVER_ERROR = new ResultObj(SysContast.CODE_ERROR, SysContast.SERVER_ERROR);
+    public static final ResultObj CHECK_TRUE_RENTID = new ResultObj(SysContast.CODE_SUCCESS, SysContast.RENTID_TRUE);
+    public static final ResultObj CHECK_FALSE_RENTID = new ResultObj(SysContast.CODE_ERROR, SysContast.RENTID_FALSE);
+    public static final ResultObj RENT_FINISH_TRUE = new ResultObj(SysContast.CODE_ONE, SysContast.RENT_FINISH_TRUE);;
     private Integer code;
     private String msg;
 

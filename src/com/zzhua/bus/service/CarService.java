@@ -22,6 +22,8 @@ public interface CarService {
 
     void deleteBatchCar(String[] ids);
 
+    Car selectByPrimaryKey(String carnumber);
+
     DataGridView queryCarByPage(CarVo carVo);
 
     void updateByPrimaryKeySelective(Car car);

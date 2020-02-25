@@ -20,6 +20,8 @@ public interface RentService {
 
     void updateRentSelectiveById(Rent rent);
 
+    Rent selectByPrimaryKey(String rentid);
+
     void deleteRent(String id);
 
     void deleteBatchRent(String[] ids);

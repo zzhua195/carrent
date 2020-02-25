@@ -65,4 +65,9 @@ public class CarServiceImpl implements CarService {
         }
     }
 
+    @Override
+    public Car selectByPrimaryKey(String carnumber) {
+        return carMapper.selectByPrimaryKey(carnumber);
+    }
+
 }

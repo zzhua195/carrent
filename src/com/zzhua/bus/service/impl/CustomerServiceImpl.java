@@ -55,6 +55,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer selectByPrimaryKey(String identity) {
+        return customerMapper.selectByPrimaryKey(identity);
+    }
+
+    @Override
     public void deleteBatchCustomer(String[] identitys) {
         for (String identity : identitys) {
             this.deleteCustomer(identity);

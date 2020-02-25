@@ -20,6 +20,8 @@ public interface CustomerService {
 
     void deleteCustomer(String identity);
 
+    Customer selectByPrimaryKey(String identity);
+
     void deleteBatchCustomer(String[] ids);
 
     DataGridView queryCustomerByPage(CustomerVo customerVo);

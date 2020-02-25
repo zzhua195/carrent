@@ -50,6 +50,11 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
+    public Rent selectByPrimaryKey(String rentid) {
+        return rentMapper.selectByPrimaryKey(rentid);
+    }
+
+    @Override
     public void deleteRent(String identity) {
         rentMapper.deleteByPrimaryKey(identity);
     }

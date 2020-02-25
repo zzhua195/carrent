@@ -51,5 +51,9 @@ public class RandomUtils {
 
         return SysContast.DEFAULT_RENT_PREFIX+"_"+sdf2.format(new Date())+"_"+(10000+random.nextInt(90000));
     }
+
+    public static String generateCheckId() {
+	    return SysContast.DEFAULT_CHECK_PREFIX+"_"+sdf2.format(new Date())+"_"+(10000+random.nextInt(90000));
+    }
 }
 

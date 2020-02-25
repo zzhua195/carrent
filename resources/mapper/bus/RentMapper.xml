@@ -138,7 +138,7 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where rentid = #{rentid,jdbcType=VARCHAR}
   </update>
-    <select id="queryAllRent"  resultMap="BaseResultMap">
+    <select id="queryAllRent" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from bus_rent
@@ -156,7 +156,7 @@
                 and identity like "%"#{identity}"%"
             </if>
             <if test="starttime!=null">
-                and createtime >= #{starttime}
+                and createtime &gt;= #{starttime}
             </if>
             <if test="endtime!=null">
                 and createtime &lt; #{endtime}
